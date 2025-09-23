@@ -1,0 +1,120 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(245, 241, 241);
+   font-family: "Roboto Condensed", sans-serif;
+}
+
+header {
+   font-family: "Roboto Condensed", sans-serif;
+  background-color: white;
+  padding: 10px ;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  display: flex;
+  box-shadow: #555;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.logo{
+  margin-right: 5px;
+  width: 55px;
+}
+.nav-header > h1 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+/* General page container */
+.container {
+  color: #333;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.add-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-btn:hover {
+  background: #333;
+}
+
+/* Ingredients section */
+.ingredients h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.ingredients ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+/* Footer box */
+.footer-box {
+  margin-top: 40px;
+  background: #f8f2ec;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-text .title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-text .subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.recipe-btn {
+  background: #e04f2f;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.recipe-btn:hover {
+  background: #c93f23;
+}

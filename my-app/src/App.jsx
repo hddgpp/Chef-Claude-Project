@@ -1,5 +1,12 @@
+import {RecipePage} from "../components/RecipePage.jsx"
+import { Header } from "../components/Header.jsx"
+import { Footer } from "../components/Footer.jsx"
 export function App() {
   return(
-    <h1>Hello world</h1>
+    <>
+      <Header/>
+      <RecipePage/>
+      <Footer/>
+    </>
   )
 }
