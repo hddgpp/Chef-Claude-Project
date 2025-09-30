@@ -1,4 +1,4 @@
-import hat from '../../public/chef_hat.png'
+import hat from '/chef_hat.png'
 
 export function Header() {
     return (

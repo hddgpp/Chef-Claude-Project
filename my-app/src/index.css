@@ -40,7 +40,7 @@ header {
 /* Container */
 .container {
   background: #fff;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
   padding: 30px;
   border-radius: 16px;
@@ -147,4 +147,51 @@ header {
 
 .recipe-btn:hover {
   background: linear-gradient(135deg, #e06b00, #d63a00);
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 10px;
+  }
+
+  .nav-header > h1 {
+    font-size: 1.5rem;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .footer-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .recipe-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .logo {
+    width: 40px;
+  }
+
+  .nav-header > h1 {
+    font-size: 1.3rem;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+  }
+
+  .ingredients h2 {
+    font-size: 18px;
+  }
 }
