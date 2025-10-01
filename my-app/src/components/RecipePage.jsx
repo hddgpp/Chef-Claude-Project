@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 
 export default function RecipePage() {
     const [ingredients, SetIngredients] = React.useState([])
+    const [showAlert, setShowAlert] = React.useState(false)
     const inputRef = useRef(null)
     const List = ingredients.map(x => {
     return(
@@ -21,7 +22,8 @@ export default function RecipePage() {
 
       if (!newIngredient) return;
       if (!/^[a-zA-Z\s]+$/.test(newIngredient)) {
-      alert("Invalid input");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 3000);
       return;
     }
 
@@ -40,6 +42,11 @@ export default function RecipePage() {
   
   return (
     <main>
+        {showAlert && (
+          <div className="alert-slide">
+            Invalid input - Only letters and spaces allowed
+          </div>
+        )}
         <form  className="container" onSubmit={submit}>
             <div className="search-bar">
                 <input type="text" ref={inputRef} placeholder="e.g. oregano" name="ingredient"/>
