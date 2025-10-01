@@ -1,4 +1,6 @@
-export function RecipePage() {
+import React from 'react'
+
+export default function RecipePage() {
     const ingredients = ['eggs', 'lam', 'milk']
     const List = ingredients.map(x => {
     return(

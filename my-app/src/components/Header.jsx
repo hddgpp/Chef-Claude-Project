@@ -1,6 +1,6 @@
 import hat from '/chef_hat.png'
 
-export function Header() {
+export default function Header() {
     return (
     <header>
         <nav className="nav-header ">

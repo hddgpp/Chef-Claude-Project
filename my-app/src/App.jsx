@@ -1,6 +1,6 @@
-import {RecipePage} from "./components/RecipePage.jsx"
-import { Header } from "./components/Header.jsx"
-export function App() {
+import RecipePage from "./components/RecipePage.jsx"
+import  Header  from "./components/Header.jsx"
+export default function App() {
   return(
     <>
       <Header/>
