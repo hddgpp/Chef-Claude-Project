@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function RecipePage() {
-    const ingredients = ['eggs', 'lam', 'milk']
+    const [ingredients, SetIngredients] = React.useState([])
     const List = ingredients.map(x => {
     return(
       <li key={x}> {x}</li>
@@ -9,11 +9,12 @@ export default function RecipePage() {
    })
 
    function submit(e) {
+    SetIngredients(prev => [...prev, newIngredient])
+
      e.preventDefault();
      const formData = new FormData(e.currentTarget)
      const newIngredient = formData.get('ingredient')
-     ingredients.push(newIngredient)
-     console.log(ingredients)
+
    }
 
   
