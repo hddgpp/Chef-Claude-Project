@@ -9,6 +9,10 @@ export default function RecipePage() {
     )
    })
 
+   function removeIngredient(index) {
+  SetIngredients(prev => prev.filter((_, i) => i !== index));
+}
+
    function submit(e) {
      e.preventDefault();
 
@@ -51,7 +55,10 @@ export default function RecipePage() {
                 ) : (
                   <ul>
                     {ingredients.map((x, i) => (
-                      <li key={i}>{x}</li>
+                       <li className='ingredient-item' key={i}>
+                        {x}
+                        <button className="delete-btn" onClick={() => removeIngredient(i)}>✕</button>
+                       </li>
                     ))}
                   </ul>
                 )}

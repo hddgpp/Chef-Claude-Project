@@ -149,6 +149,40 @@ header {
   background: linear-gradient(135deg, #e06b00, #d63a00);
 }
 
+ul {
+  list-style: none; /* remove default bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.delete-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;    /* slightly rounded corners */
+  background-color: #ff1f1f;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.ingredient-item {
+  display: flex;          /* align text and button horizontally */
+  justify-content: space-between; /* push button to the right */
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delete-btn:hover {
+  background-color: #d91919;
+}
+
+
 @media (max-width: 768px) {
   header {
     height: auto;
