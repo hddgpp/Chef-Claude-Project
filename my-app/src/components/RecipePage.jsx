@@ -59,7 +59,7 @@ export default function RecipePage() {
             aria-label='Add ingredients'
             placeholder="e.g. oregano"
             name="ingredient"
-            maxLength={50}
+            maxLength={40}
           />
           <button className="add-btn">+ Add ingredient</button>
           <button onClick={clear} className="add-btn clear">
