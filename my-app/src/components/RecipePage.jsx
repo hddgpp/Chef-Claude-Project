@@ -1,16 +1,17 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 
 export default function RecipePage() {
-  const [ingredients, SetIngredients] = useState([])
-  const [showAlert, setShowAlert] = useState(false)
-  const inputRef = useRef(null)
-  const timeoutRef = useRef(null) 
+  const [ingredients, SetIngredients] = React.useState([])
+  const [showAlert, setShowAlert] = React.useState(false)
+  const inputRef = React.useRef(null)
+  const timeoutRef = React.useRef(null) 
 
   function removeIngredient(index) {
     SetIngredients(prev => prev.filter((_, i) => i !== index))
   }
 
   function submit(formData) {
+    
     const newIngredient = formData.get('ingredient').trim()
 
     if (!newIngredient) return
@@ -30,7 +31,6 @@ export default function RecipePage() {
     }
 
     SetIngredients(prev => [...prev, newIngredient])
-
     inputRef.current.value = ''
     inputRef.current.focus()
   }
@@ -40,6 +40,8 @@ export default function RecipePage() {
     SetIngredients([])
     inputRef.current.value = ''
   }
+
+  console.log(ingredients)
 
   return (
     <main>
@@ -57,6 +59,7 @@ export default function RecipePage() {
             aria-label='Add ingredients'
             placeholder="e.g. oregano"
             name="ingredient"
+            maxLength={50}
           />
           <button className="add-btn">+ Add ingredient</button>
           <button onClick={clear} className="add-btn clear">
@@ -86,7 +89,7 @@ export default function RecipePage() {
           )}
         </div>
 
-        <div>
+        {ingredients.length > 0 && (<div>
           <div className="footer-box">
             <div className="footer-text">
               <p className="title">Ready for a recipe?</p>
@@ -96,7 +99,7 @@ export default function RecipePage() {
             </div>
             <button className="recipe-btn">Get a recipe</button>
           </div>
-        </div>
+        </div>)}
       </form>
     </main>
   )
