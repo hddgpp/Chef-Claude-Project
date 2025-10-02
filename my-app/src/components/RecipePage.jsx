@@ -10,10 +10,7 @@ export default function RecipePage() {
     SetIngredients(prev => prev.filter((_, i) => i !== index))
   }
 
-  function submit(e) {
-    e.preventDefault()
-
-    const formData = new FormData(e.currentTarget)
+  function submit(formData) {
     const newIngredient = formData.get('ingredient').trim()
 
     if (!newIngredient) return
@@ -52,11 +49,12 @@ export default function RecipePage() {
         </div>
       )}
 
-      <form className="container" onSubmit={submit}>
+      <form className="container" action={submit}>
         <div className="search-bar">
           <input
             type="text"
             ref={inputRef}
+            aria-label='Add ingredients'
             placeholder="e.g. oregano"
             name="ingredient"
           />
