@@ -44,14 +44,18 @@ export default function RecipePage() {
   console.log(ingredients)
 
   return (
-    <main>
+    <main className="container">
       {showAlert && (
         <div className="alert-slide">
           Invalid input - Only letters and spaces allowed
         </div>
       )}
 
-      <form className="container" action={submit}>
+      {ingredients.length < 4 ?
+       <p className="ingredients-alert">  You need at least 4 ingredients to generate a recipe.</p>
+      : null }
+
+      <form  action={submit}>
         <div className="search-bar">
           <input
             type="text"
@@ -89,7 +93,7 @@ export default function RecipePage() {
           ) }
         </div>
 
-        {ingredients.length ? (<div>
+        {ingredients.length >= 4 ? (<div>
           <div className="footer-box">
             <div className="footer-text">
               <p className="title">Ready for a recipe?</p>

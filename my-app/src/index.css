@@ -207,6 +207,15 @@ ul {
   transform-origin: top;
 }
 
+.ingredients-alert {
+    color: #ff7070;          /* light gray */
+    text-align: center;    /* center text */
+    font-size: 0.9rem;     /* small but readable */
+    line-height: 1.4; 
+    margin-bottom: 15px;     /* makes it easier to read */
+    font-family: Arial, sans-serif; /* optional for clean look */
+  }
+
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
