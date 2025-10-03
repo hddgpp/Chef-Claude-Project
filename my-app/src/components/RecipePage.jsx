@@ -66,7 +66,7 @@ export default function RecipePage() {
             Clear All
           </button>
         </div>
-
+      </form>
         <div className="ingredients">
           <h2>Ingredients on hand:</h2>
 
@@ -100,7 +100,6 @@ export default function RecipePage() {
             <button className="recipe-btn">Get a recipe</button>
           </div>
         </div>) : null}
-      </form>
     </main>
   )
 }
