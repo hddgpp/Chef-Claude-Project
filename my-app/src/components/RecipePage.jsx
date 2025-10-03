@@ -1,4 +1,5 @@
 import React from 'react'
+import RecipeDisplay from "./RecipeDisplay"; 
 
 export default function RecipePage() {
   const [ingredients, setIngredients] = React.useState([])
@@ -118,10 +119,7 @@ export default function RecipePage() {
         )}
 
         {recipeShown && ingredients.length >= 4 && (
-          <div className="recipe-display">
-            <h3>Your Recipe</h3>
-            <p>Recipe content will appear here...</p>
-          </div>
+           <RecipeDisplay ingredients={ingredients} />
         )}
       </div>
     </main>
