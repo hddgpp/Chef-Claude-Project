@@ -3,11 +3,16 @@ import React from 'react'
 export default function RecipePage() {
   const [ingredients, SetIngredients] = React.useState([])
   const [showAlert, setShowAlert] = React.useState(false)
+  const [recipeShown, SetRecipeShown] = React.useState(false)
   const inputRef = React.useRef(null)
   const timeoutRef = React.useRef(null) 
 
   function removeIngredient(index) {
     SetIngredients(prev => prev.filter((_, i) => i !== index))
+  }
+
+  function toggleRecipeShown() {
+    SetRecipeShown(prev => !prev)
   }
 
   function submit(formData) {
@@ -44,7 +49,8 @@ export default function RecipePage() {
   console.log(ingredients)
 
   return (
-    <main className="container">
+    <main>
+      <div className="container">
       {showAlert && (
         <div className="alert-slide">
           Invalid input - Only letters and spaces allowed
@@ -101,9 +107,11 @@ export default function RecipePage() {
                 Generate a recipe from your list of ingredients.
               </p>
             </div>
-            <button className="recipe-btn">Get a recipe</button>
+             <button className="recipe-btn" onClick={toggleRecipeShown}>Get a recipe</button>
           </div>
         </div>) : null}
+      </div>
+      {recipeShown === true ? ('yo wsp') : null}
     </main>
   )
 }
