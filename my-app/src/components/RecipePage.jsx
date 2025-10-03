@@ -86,10 +86,10 @@ export default function RecipePage() {
                 </li>
               ))}
             </ul>
-          )}
+          ) }
         </div>
 
-        {ingredients.length > 0 && (<div>
+        {ingredients.length ? (<div>
           <div className="footer-box">
             <div className="footer-text">
               <p className="title">Ready for a recipe?</p>
@@ -99,7 +99,7 @@ export default function RecipePage() {
             </div>
             <button className="recipe-btn">Get a recipe</button>
           </div>
-        </div>)}
+        </div>) : null}
       </form>
     </main>
   )
