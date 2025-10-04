@@ -1,10 +1,11 @@
 import React from 'react'
 import RecipeDisplay from "./RecipeDisplay"; 
+import {getRecipeFromAI} from './ai.js'
 
 export default function RecipePage() {
   const [ingredients, setIngredients] = React.useState([])
   const [showAlert, setShowAlert] = React.useState(false)
-  const [recipeShown, setRecipeShown] = React.useState(false)
+  const [recipeShown, setRecipeShown] = React.useState('')
   const inputRef = React.useRef(null)
   const timeoutRef = React.useRef(null) 
 
@@ -12,8 +13,10 @@ export default function RecipePage() {
     setIngredients(prev => prev.filter((_, i) => i !== index))
   }
 
-  function toggleRecipeShown() {
-    setRecipeShown(prev => !prev)
+  async function GetRecipe() {
+    const generatedRecipe = await getRecipeFromAI(ingredients)
+    setRecipeShown(generatedRecipe)
+    console.log(generatedRecipe)
   }
 
   function submit(formData) {
@@ -112,14 +115,14 @@ export default function RecipePage() {
                 Generate a delicious recipe using your {ingredients.length} ingredients.
               </p>
             </div>
-            <button className="recipe-btn" onClick={toggleRecipeShown}>
+            <button className="recipe-btn" onClick={GetRecipe}>
               {recipeShown ? 'Hide Recipe' : 'Get Recipe'}
             </button>
           </div>
         )}
 
         {recipeShown && ingredients.length >= 4 && (
-           <RecipeDisplay ingredients={ingredients} />
+           <RecipeDisplay ingredients={ingredients} recipeShown = {recipeShown}/>
         )}
       </div>
     </main>
