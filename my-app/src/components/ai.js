@@ -7,7 +7,7 @@ The recipe can include additional ingredients they didn't mention, but try not t
 Format your response in markdown to make it easier to render to a web page.
 `;
 
-const HF_ACCESS_TOKEN = import.meta.env.VITE_HF_ACCESS_TOKEN;
+const HF_ACCESS_TOKEN = import.meta.env.local.VITE_HF_ACCESS_TOKEN;
 const hf = new HfInference(HF_ACCESS_TOKEN);
 
 export async function getRecipeFromAI(ingredientsArr) {
