@@ -6,17 +6,50 @@ export default function RecipePage() {
   const [ingredients, setIngredients] = React.useState([])
   const [showAlert, setShowAlert] = React.useState(false)
   const [recipeShown, setRecipeShown] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(false)
   const inputRef = React.useRef(null)
   const timeoutRef = React.useRef(null) 
+  const recipeSectionRef = React.useRef(null)
+  const hasScrolledRef = React.useRef(false) // NEW: Track if we've auto-scrolled
 
   function removeIngredient(index) {
     setIngredients(prev => prev.filter((_, i) => i !== index))
   }
 
+  // NEW: Auto-scroll when button appears (when ingredients reach 4)
+  React.useEffect(() => {
+    if (ingredients.length >= 4 && !hasScrolledRef.current) {
+      setTimeout(() => {
+        recipeSectionRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        })
+        hasScrolledRef.current = true
+      }, 300)
+    }
+  }, [ingredients.length])
+
   async function GetRecipe() {
+    if (recipeShown) {
+      // If recipe is already shown, just hide it
+      setRecipeShown('')
+      return
+    }
+
+    setIsLoading(true)
+    setRecipeShown('')
+    
+    // NEW: Also scroll when clicking the button
+    setTimeout(() => {
+      recipeSectionRef.current?.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      })
+    }, 100)
+    
     const generatedRecipe = await getRecipeFromAI(ingredients)
     setRecipeShown(generatedRecipe)
-    console.log(generatedRecipe)
+    setIsLoading(false)
   }
 
   function submit(formData) {
@@ -45,6 +78,8 @@ export default function RecipePage() {
   function clear(e) {
     e.preventDefault()
     setIngredients([])
+    setRecipeShown('')
+    hasScrolledRef.current = false // NEW: Reset scroll tracking
     inputRef.current.value = ''
     inputRef.current.focus()
   }
@@ -108,21 +143,32 @@ export default function RecipePage() {
         </div>
 
         {ingredients.length >= 4 && (
-          <div className="footer-box">
+          <div className="footer-box" ref={recipeSectionRef}>
             <div className="footer-text">
               <p className="title">Ready for a recipe?</p>
               <p className="subtitle">
                 Generate a delicious recipe using your {ingredients.length} ingredients.
               </p>
             </div>
-            <button className="recipe-btn" onClick={GetRecipe}>
-              {recipeShown ? 'Hide Recipe' : 'Get Recipe'}
+            <button 
+              className="recipe-btn" 
+              onClick={GetRecipe}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Generating...' : (recipeShown ? 'Hide Recipe' : 'Get Recipe')}
             </button>
           </div>
         )}
 
-        {recipeShown && ingredients.length >= 4 && (
-           <RecipeDisplay ingredients={ingredients} recipeShown = {recipeShown}/>
+        {isLoading && (
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+            <p>AI is cooking up your recipe...</p>
+          </div>
+        )}
+
+        {recipeShown && !isLoading && ingredients.length >= 4 && (
+           <RecipeDisplay ingredients={ingredients} recipeShown={recipeShown}/>
         )}
       </div>
     </main>
